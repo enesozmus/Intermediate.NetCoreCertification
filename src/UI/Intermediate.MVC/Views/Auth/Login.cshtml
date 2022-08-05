@@ -1,0 +1,25 @@
+﻿@model LoginCommandRequest
+
+<link href="css/main.min.css" rel="stylesheet">
+
+@{
+     ViewData["Title"] = "Giriş Yap";
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+     <form asp-controller="Auth" asp-action="Login" method="post" class="m-5 p-3">
+          <div class="mb-3">
+               <label class="form-label">Email Adresi: </label>
+               <input type="email" class="form-control" name="Email" />
+               <span asp-validation-for="Email" class="text-danger"></span>
+          </div>
+          <div class="mb-3">
+               <label class="form-label">Parola: </label>
+               <input type="password" class="form-control" name="Password" />
+               <span asp-validation-for="Password" class="text-danger"></span>
+          </div>
+          <button type="submit" class="btn btn-primary">Giriş Yap</button>
+     </form>
+</div>
+

@@ -1,0 +1,82 @@
+﻿@model UpdateBlockCommandRequest
+
+@{
+     ViewData["Title"] = "UpdateBlock";
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (TempData["errormessage"] != null)
+{
+     <p style="color:red;">
+          @TempData["errormessage"]?.ToString()
+     </p>
+}
+
+<style>
+     .form-control {
+         border: 1px solid #0080ff;
+     }
+</style>
+
+
+<div class="container my-4 pt-4">
+     <div class="row">
+          <div class="col-md-12">
+               <form asp-action="UpdateBlock" asp-controller="Blocks" method="post">
+
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="row mt-2">
+
+                         <div class="col-md-6">
+                              <div class="form-group">
+                                   <label>Blok Adı</label>
+                                   <input type="text" class="form-control" asp-for="BlockName" />
+                                   <span class="text-danger" asp-validation-for="BlockName"></span>
+                              </div>
+                         </div>
+
+                         <div class="col-md-6">
+                              <div class="form-group">
+                                   <label>Toplam Kat</label>
+                                   <input type="text" class="form-control" asp-for="TotalFlats" />
+                                   <span class="text-danger" asp-validation-for="TotalFlats"></span>
+                              </div>
+                         </div>
+
+                    </div>
+
+                    <div class="row mt-2">
+
+                         <div class="col-md-6">
+                              <div class="form-group">
+                                   <label>Toplam Daire</label>
+                                   <input type="text" class="form-control" asp-for="TotalFloors" />
+                                   <span class="text-danger" asp-validation-for="TotalFloors"></span>
+                              </div>
+                         </div>
+
+                         <div class="col-md-6">
+                              <div class="form-group">
+                                   <label>Adres</label>
+                                   <input type="text" class="form-control" asp-for="Address" />
+                                   <span class="text-danger" asp-validation-for="Address"></span>
+                              </div>
+                         </div>
+
+                    </div>
+
+                    @*####################*@
+                    <div class="form-group">
+                         <button class="btn btn-info" type="submit">Kaydet</button>
+                         <a class="btn btn-info" asp-action="GetBlocks" asp-controller="Blocks">Geri</a>
+                    </div>
+                    @*####################*@
+
+               </form>
+          </div>
+     </div>
+</div>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

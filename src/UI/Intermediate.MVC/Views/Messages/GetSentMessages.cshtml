@@ -1,0 +1,43 @@
+﻿@model IReadOnlyList<GetSentMessagesQueryResponse>
+
+@{
+     ViewData["Title"] = "GetSentMessages";
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table table-striped table-hover">
+
+     <thead class="thead-light">
+          <tr>
+               <th>ID </th>
+               <th>Gönderen Kişi</th>
+               <th>Alıcı Kişi</th>
+               <th>Mesaj</th>
+               <th>Okundu mu?</th>
+               <th>Gönderiliş Tarihi</th>
+               <th></th>
+               <th></th>
+          </tr>
+     </thead>
+
+     <tbody>
+
+          @foreach (var item in Model)
+          {
+               <tr>
+                    <td>@item.Id</td>
+                    <td>@item.SendUserId</td>
+                    <td>@item.ReceiveUserId</td>
+                    <td>@item.Text</td>
+                    <td>@item.IsLooked</td>
+                    <td>@item.CreatedDate</td>
+                    <td>
+                         <a class="btn btn-warning" asp-route-id="@item.Id" asp-action="UpdateMessage" asp-controller="Messages">Güncelle</a>
+                    </td>
+                    <td>
+                         <a class="btn btn-danger" asp-route-id="@item.Id" asp-action="RemoveMessage" asp-controller="Messages">Sil</a>
+                    </td>
+               </tr>
+          }
+     </tbody>
+</table>
